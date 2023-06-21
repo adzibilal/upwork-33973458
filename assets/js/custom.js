@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     var refillButton = document.querySelector('.submit-button')
     var blackOverlay = document.querySelector('.black-overlay')
+    var doneOverlay = document.querySelector('.done-overlay')
     var step1Element = document.getElementById('step1')
     var step2Element = document.getElementById('step2')
     var step3Element = document.getElementById('step3')
@@ -48,25 +49,29 @@ document.addEventListener('DOMContentLoaded', function () {
             step1Element.classList.add('show')
 
             setTimeout(function () {
-                step1Element.classList.add('animate__fadeOut')
                 step1Element.classList.remove('show')
                 step2Element.classList.add('show')
                 // Memulai countdown 5 menit
                 startCountdown(5 * 60)
 
                 setTimeout(function () {
-                    step2Element.classList.add('animate__fadeOut')
                     step2Element.classList.remove('show')
                     step3Element.classList.add('show')
-                    setTimeout(function () {
-                        step3Element.classList.add('animate__fadeOut')
-                        step3Element.classList.remove('show')
-                        blackOverlay.classList.remove('show')
-                        location.reload()
-                    }, 3500)
+                    doneOverlay.classList.add('show')
+                    // setTimeout(function () {
+                    //     step3Element.classList.remove('show')
+                    //     blackOverlay.classList.remove('show')
+                    //     // location.reload()
+                    // }, 3500)
                 }, 4500)
             }, 2500)
         }, 200)
+    })
+
+    doneOverlay.addEventListener('click', function () {
+        step3Element.classList.remove('show')
+        blackOverlay.classList.remove('show')
+        doneOverlay.classList.remove('show')
     })
 
     function startCountdown(duration) {
