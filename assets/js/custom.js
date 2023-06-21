@@ -7,9 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var counterElement = document.getElementById('counter-payment')
     var amountTotal = document.getElementById('amount-total')
     var successTotal = document.getElementById('success-total')
-
     var coinItems = document.getElementsByClassName('item-coins')
     var totalPriceElement = document.querySelector('.total-price span')
+    var customForm = document.getElementById('custom-form')
+    var inpCustom = document.querySelector('.inp-custom')
+    var priceCustom = document.getElementById('price-custom')
+    var button = document.getElementById('refill-btn')
 
     for (var i = 0; i < coinItems.length; i++) {
         coinItems[i].addEventListener('click', function () {
@@ -18,6 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             this.classList.add('active')
+
+            // Hilangkan elemen <p>Custom</p>
+            var customText = customForm.querySelector('.amount p')
+            customText.style.display = 'block'
+
+            // Tambahkan kelas "show" ke elemen dengan kelas "inp-custom"
+            var inpCustom = customForm.querySelector('.inp-custom')
+            inpCustom.classList.remove('show')
+            inpCustom.value = ''
+            // Ubah teks elemen dengan id "price-custom"
+            var priceCustom = customForm.querySelector('#price-custom')
+            priceCustom.textContent = 'Large amount supported'
 
             var price = this.querySelector('.price').textContent
             totalPriceElement.innerHTML = '<b>' + price + '</b>'
@@ -47,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         step3Element.classList.add('animate__fadeOut')
                         step3Element.classList.remove('show')
                         blackOverlay.classList.remove('show')
-
+                        location.reload()
                     }, 3500)
                 }, 4500)
             }, 2500)
@@ -75,4 +90,51 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 1000)
     }
+
+    // Tambahkan event listener untuk meng-handle klik pertama kali
+    customForm.addEventListener('click', function () {
+        // Hilangkan elemen <p>Custom</p>
+        var customText = customForm.querySelector('.amount p')
+        customText.style.display = 'none'
+
+        // Tambahkan kelas "show" ke elemen dengan kelas "inp-custom"
+        var inpCustom = customForm.querySelector('.inp-custom')
+        inpCustom.classList.add('show')
+
+        // Ubah teks elemen dengan id "price-custom"
+        var priceCustom = customForm.querySelector('#price-custom')
+        priceCustom.textContent = '30-2,500,000'
+
+        totalPriceElement.innerHTML = '<b> $ 0 </b>'
+    })
+
+    // Tambahkan event listener untuk meng-handle perubahan nilai input
+    inpCustom.addEventListener('input', function () {
+        var inputValue = parseFloat(inpCustom.value)
+
+        if (isNaN(inputValue) || inputValue < 30) {
+            priceCustom.textContent = 'Minimum : 30'
+            priceCustom.classList.add('text-red')
+            customForm.classList.add('border-red')
+            totalPriceElement.innerHTML = '<b> $ 0 </b>'
+            // Menonaktifkan tombol
+            button.disabled = true
+        } else if (isNaN(inputValue) || inputValue > 2500000) {
+            priceCustom.textContent = 'Maximum : 2,500,000'
+            priceCustom.classList.add('text-red')
+            customForm.classList.add('border-red')
+            totalPriceElement.innerHTML = '<b> $ 0 </b>'
+            // Menonaktifkan tombol
+            button.disabled = true
+        } else {
+            var price = inputValue * 0.0112857142857143
+            priceCustom.textContent = '$ ' + price.toFixed(2)
+            totalPriceElement.innerHTML = '<b>$ ' + price.toFixed(2) + '</b>'
+            amountTotal.innerHTML = '$ ' + price.toFixed(2)
+            successTotal.innerHTML = '<b>$' + price.toFixed(2) + '</b>'
+            priceCustom.classList.remove('text-red')
+            customForm.classList.remove('border-red')
+            button.disabled = false
+        }
+    })
 })

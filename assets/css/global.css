@@ -1,6 +1,6 @@
 @font-face {
     font-family: MainFont;
-    src: url(../fonts/main-font/main-font.otf) format("otf");
+    src: url(../fonts/Proxima-Nova/Fontspring-DEMO-proximanova-regular.otf) format("otf");
 }
 
 body {
@@ -8,6 +8,10 @@ body {
     padding: 0;
     margin: 0;
     padding-top: 120px;
+}
+
+p {
+    font-family: MainFont, sans-serif !important;
 }
 
 .container {
@@ -255,7 +259,7 @@ body {
     -webkit-box-pack: center;
     justify-content: center;
     border-radius: 4px;
-    border: 2px solid rgba(22, 24, 35, 0.12);
+    border: 1px solid rgba(22, 24, 35, 0.12);
     cursor: pointer;
     pointer-events: initial;
     opacity: 1;
@@ -264,7 +268,7 @@ body {
 }
 
 .item-coins.active {
-    border: 2px solid rgb(250, 206, 21);
+    border: 1px solid rgb(250, 206, 21);
 }
 
 .amount {
@@ -289,8 +293,51 @@ body {
     color: rgba(22, 24, 35, 0.5);
     text-align: center;
     line-height: 1.1;
+    font-family: MainFont, sans-serif !important;
 }
 
+.inp-custom {
+    border: 0;
+    border-bottom: 1px solid;
+    display: none;
+    width: 140px;
+    font-size: 24px;
+}
+.inp-custom:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.inp-custom.show {
+    display: block;
+}
+
+.text-red {
+    color: red;
+}
+.border-red {
+    border-color: red !important;
+}
+
+#label-custom {
+    margin: 0 !important;
+}
+/* Untuk input number pada semua browser modern */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Untuk input number pada Chrome */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Untuk input number pada Firefox */
+input[type="number"]::-moz-number-spin-box {
+    -moz-appearance: none;
+}
 /* Payment Method */
 
 .payment-method {
@@ -458,24 +505,25 @@ body {
     color: rgba(22, 24, 35, 0.6);
 }
 
-.modal.step-2 .content{
+.modal.step-2 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.item-info.right{
+.item-info.right {
     text-align: right;
 }
-.item-info p{
+.item-info p {
     margin: 0;
     margin-top: 10px;
 }
 
-.item-info h3{
+.item-info h3 {
     margin-top: 10px;
 }
 
-.desc-success{
+.desc-success {
     line-height: 25px;
+    text-align: center;
 }

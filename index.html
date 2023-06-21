@@ -123,12 +123,13 @@
                     </div>
                     <div class="price">$ 185</div>
                 </div>
-                <div class="item-coins">
+                <div class="item-coins" id="custom-form">
                     <div class="amount">
                         <img src="/assets/img/ic-coin-big.svg" alt="" />
-                        Special
+                        <p id="label-custom">Custom</p>
+                        <input type="number" class="inp-custom">
                     </div>
-                    <div class="price">Large amount supported</div>
+                    <div id="price-custom" class="price">Large amount supported</div>
                 </div>
             </div>
             <!-- PAYMENT METHOD -->
@@ -155,7 +156,7 @@
                 <span><b>$ 0.74</b></span>
             </div>
 
-            <button type="button" class="submit-button">Refillable</button>
+            <button type="button" id="refill-btn" class="submit-button">Refillable</button>
         </div>
         <!-- MODAL -->
         <div class="black-overlay">
@@ -168,7 +169,7 @@
                     src="assets/img/loading.gif"
                     alt="" />
                 <h2>Processing Your Payment</h2>
-                <p>Check your Revolut app to authoris this payment</p>
+                <p>Check your Revolut app to authorise this payment</p>
             </div>
             <!-- STEP 2 -->
             <div
@@ -185,7 +186,7 @@
                 </div>
                 <div class="content">
                     <div id="counter-payment" class="counter"></div>
-                    <h3>Check your Revolut app to authoris this payment</h3>
+                    <h3>Check your Revolut app to authorise this payment</h3>
                     <div class="flex-cn-modal">
                         <div class="item-info">
                             <p>MERCHANT</p>
