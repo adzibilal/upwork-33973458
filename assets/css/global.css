@@ -4,14 +4,14 @@
 }
 
 body {
-    font-family: MainFont, sans-serif !important;
+    font-family: proxima-nova, sans-serif !important;
     padding: 0;
     margin: 0;
     padding-top: 120px;
 }
 
 p {
-    font-family: MainFont, sans-serif !important;
+    font-family: proxima-nova, sans-serif !important;
 }
 
 .container {
@@ -288,7 +288,7 @@ p {
 }
 
 .price {
-    font-weight: 700;
+    font-weight: 800;
     font-size: 14px;
     color: rgba(22, 24, 35, 0.5);
     text-align: center;
