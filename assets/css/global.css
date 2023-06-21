@@ -293,7 +293,6 @@ p {
     color: rgba(22, 24, 35, 0.5);
     text-align: center;
     line-height: 1.1;
-    font-family: MainFont, sans-serif !important;
 }
 
 .inp-custom {
