@@ -268,7 +268,7 @@ p {
 }
 
 .item-coins.active {
-    border: 1px solid rgb(250, 206, 21);
+    border: 2px solid rgb(250, 206, 21);
 }
 
 .amount {
